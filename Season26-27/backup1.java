@@ -17,6 +17,9 @@ public class JeremySenior2026 extends LinearOpMode {
     private CRServo IntakeMotor; // Change name and if motor (CRServo) is not right.
     // Add Outtake here when built
 
+    double IntakePowerSpeed;
+    double DriveMultiplier;
+    
     @Override
     public void runOpMode() {
         FrontLeft = hardwareMap.get(DcMotor.class, "FrontLeft");
@@ -24,9 +27,15 @@ public class JeremySenior2026 extends LinearOpMode {
         BackLeft = hardwareMap.get(DcMotor.class, "BackLeft");
         BackRight = hardwareMap.get(DcMotor.class, "BackRight");
 
+        IntakeMotor = hardwareMap.get(CRServo.class, "IntakeMotor");
+
+        // Multipliers and values
+        IntakePowerSpeed = 0.75;
+        DriveMultiplier = 1;
+        
         waitForStart();
         if (opModeIsActive()) {
-            // Motor setup here
+            IntakeMotor.power(IntakePowerSpeed);
 
             while (opModeIsActive()) {
                 drive();
@@ -44,5 +53,8 @@ private void drive() {
     y = -gamepad1.left_stick_y;
     rx = gamepad1.right_stick_x;
 
-    // Drive motor code here
+    FrontLeft.power(((y+x)+rx)*DriveMultiplier);
+    BackLeft.power(((y-x)+rx)*DriveMultiplier);
+    FrontRight.power(((y-x)-rx)*DriveMultiplier);
+    BackRight.power(((y+x)-rx)*DriveMultiplier);
 }
