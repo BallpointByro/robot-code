@@ -58,3 +58,13 @@ private void drive() {
     FrontRight.power(((y-x)-rx)*DriveMultiplier);
     BackRight.power(((y+x)-rx)*DriveMultiplier);
 }
+
+public void Intake() {
+    if (gamepad2.left_trigger) {
+        if () {
+            
+        } else {
+            
+        }
+    }
+}
