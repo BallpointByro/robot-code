@@ -66,10 +66,12 @@ private void drive() {
 private void intakeToggle() {
     if (gamepad2.left_trigger) {
         if (Intake == true) {
-            IntakeMotor.power(IntakePower);
+            IntakeMotor.power(0);
 
             Intake = false;
         } else {
+            IntakeMotor.power(IntakePower);
+
             Intake = true;
         }
     }
