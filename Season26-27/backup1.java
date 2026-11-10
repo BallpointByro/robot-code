@@ -51,7 +51,7 @@ public class JeremySenior2026 extends LinearOpMode {
 private void drive() {
     double x;
     double y;
-    double rx; // For strafing or some shit idk
+    double rx;
 
     x = gamepad1.left_stick_x;
     y = -gamepad1.left_stick_y;
